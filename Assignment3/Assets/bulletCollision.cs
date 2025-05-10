@@ -5,10 +5,11 @@ using UnityEngine;
 public class bulletCollision : MonoBehaviour
 {
     public GameObject debrisPrefab;         
-    public GameObject explosionEffect;     
-
+    public GameObject explosionEffect; 
     private void OnCollisionEnter(Collision collision)
     {
+        
+
         if (collision.gameObject.name.Contains("SM_TNT_Barrel"))
         {
             Vector3 position = collision.transform.position;
@@ -18,14 +19,32 @@ public class bulletCollision : MonoBehaviour
 
             Instantiate(explosionEffect, position, Quaternion.identity);
 
+            Destroy(explosionEffect, 2f);
+
             Destroy(collision.gameObject);
 
             Destroy(gameObject);
 
+            return;
+
             
         }
+
+        if (collision.gameObject.name.Contains("Character"))
+{
+    Animator animator = collision.gameObject.GetComponentInParent<Animator>();
+
+    Debug.Log(animator);
+    animator.SetTrigger("die");
+
+
+
+    
+    
         
+    
+}
 
 
-    }
+}
 }
