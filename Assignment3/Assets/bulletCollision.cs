@@ -6,6 +6,9 @@ public class bulletCollision : MonoBehaviour
 {
     public GameObject debrisPrefab;         
     public GameObject explosionEffect; 
+    public AudioClip exploClip;
+    public AudioClip deathClip; 
+ 
     private void OnCollisionEnter(Collision collision)
     {
         
@@ -19,6 +22,7 @@ public class bulletCollision : MonoBehaviour
 
             Instantiate(explosionEffect, position, Quaternion.identity);
 
+            AudioSource.PlayClipAtPoint(exploClip, position,2f);
             Destroy(explosionEffect, 2f);
 
             Destroy(collision.gameObject);
@@ -36,6 +40,8 @@ public class bulletCollision : MonoBehaviour
 
     Debug.Log(animator);
     animator.SetTrigger("die");
+    AudioSource.PlayClipAtPoint(deathClip, animator.transform.position,2f);
+
 
 
 

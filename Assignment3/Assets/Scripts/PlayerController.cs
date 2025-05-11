@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float impulseTorque = 3000.0f;
 
     public GameObject hero;
+    public AudioSource walkAudio;
 
     Animator animController;
     Rigidbody rigidBody;
@@ -36,6 +37,9 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddRelativeForce(new Vector3(0, 0, input.z * impulseForce * Time.deltaTime));
 
             animController.SetBool("Walk", true);
+
+            if (!walkAudio.isPlaying)
+                walkAudio.Play();
         }
         else
         {
@@ -46,6 +50,9 @@ public class PlayerController : MonoBehaviour
                 animController.SetBool("Crouch", true);
             else
                 animController.SetBool("Crouch", false);
+                
+            if (walkAudio.isPlaying)
+            walkAudio.Pause();
         }
 
 

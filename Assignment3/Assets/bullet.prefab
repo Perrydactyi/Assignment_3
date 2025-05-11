@@ -131,3 +131,5 @@ MonoBehaviour:
     type: 3}
   explosionEffect: {fileID: 3647694387048428419, guid: a8ef6f64cba33844b98c8721caa19330,
     type: 3}
+  exploClip: {fileID: 8300000, guid: 393f7c1854f0f1141b27d7ea53475a09, type: 3}
+  deathClip: {fileID: 8300000, guid: ef6bec3934b88ec418fbeffcf118e793, type: 3}
